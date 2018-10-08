@@ -15,7 +15,7 @@ def remove_directory(directorypath):
 
 if __name__ == '__main__':
     if '{{ cookiecutter.include_testing }}' == 'n':
-        remove_file('tests/__init__.py')
+        remove_directory('test')
 
     if 'Not open source' == '{{ cookiecutter.open_source_license }}':
         remove_file('LICENSE')
