@@ -10,10 +10,10 @@ def remove_directory(directorypath):
 
 
 if __name__ == '__main__':
-    if '{{ cookiecutter.include_testing }}' == 'n':
+    if '{{ cookiecutter.include_testing }}' != 'yes':
         remove_directory('test')
 
-    if '{{ cookiecutter.include_web_client_plugin }}' == 'n':
+    if '{{ cookiecutter.include_web_client_plugin }}' != 'yes':
         remove_directory(
             os.path.join(
                 '{{ cookiecutter.package_name }}',
