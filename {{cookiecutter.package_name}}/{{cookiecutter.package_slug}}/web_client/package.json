@@ -1,0 +1,12 @@
+{
+    "name": "@girder/{{ cookiecutter.entrypoint_name }}",
+    "version": "{{ cookiecutter.version }}",
+    "private": true,
+    "description": "{{ cookiecutter.short_description }}",
+    "homepage": "{{ cookiecutter.homepage }}",
+    "license": "Apache-2.0",
+    "girderPlugin": {
+        "name": "{{ cookiecutter.entrypoint_name }}",
+        "main": "./main.js"
+    }
+}
