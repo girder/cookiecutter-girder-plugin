@@ -1,7 +1,7 @@
 {
   "full_name": "Girder Developer",
   "email": "girder.developer@example.com",
-  "plugin_name": "Example Plugin",
+  "plugin_name": "Hello World",
   "package_name": "{{ cookiecutter.plugin_name.lower().replace(' ', '-') }}",
   "package_slug": "{{ cookiecutter.package_name.lower().replace('-', '_') }}",
   "entrypoint_name": "{{ cookiecutter.package_slug }}",
