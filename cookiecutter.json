@@ -9,7 +9,5 @@
   "version": "0.1.0",
   "homepage": "https://github.com/girder/{{ cookiecutter.package_slug }}",
   "include_linting": ["y", "n"],
-  "include_testing": ["y", "n"],
-  "include_circle_ci": ["y", "n"],
-  "open_source_license": ["MIT license", "BSD license", "ISC license", "Apache Software License 2.0", "GNU General Public License v3", "Not open source"]
+  "include_testing": ["y", "n"]
 }

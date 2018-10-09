@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-"""The setup script."""
-
 from setuptools import setup, find_packages
 
 with open('README.rst') as readme_file:
@@ -12,22 +10,12 @@ requirements = [
     'girder>=3.0.0a1'
 ]
 
-{%- set license_classifiers = {
-    'MIT license': 'License :: OSI Approved :: MIT License',
-    'BSD license': 'License :: OSI Approved :: BSD License',
-    'ISC license': 'License :: OSI Approved :: ISC License (ISCL)',
-    'Apache Software License 2.0': 'License :: OSI Approved :: Apache Software License',
-    'GNU General Public License v3': 'License :: OSI Approved :: GNU General Public License v3 (GPLv3)'
-} %}
-
 setup(
     author="{{ cookiecutter.full_name.replace('\"', '\\\"') }}",
     author_email='{{ cookiecutter.email }}',
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
-{%- if cookiecutter.open_source_license in license_classifiers %}
-        '{{ license_classifiers[cookiecutter.open_source_license] }}',
-{%- endif %}
+        'License :: OSI Approved :: Apache Software License',
         'Natural Language :: English',
         "Programming Language :: Python :: 2",
         'Programming Language :: Python :: 2.7',
@@ -35,11 +23,9 @@ setup(
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6'
     ],
-    description="{{ cookiecutter.short_description }}",
+    description='{{ cookiecutter.short_description }}',
     install_requires=requirements,
-{%- if cookiecutter.open_source_license in license_classifiers %}
-    license="{{ cookiecutter.open_source_license }}",
-{%- endif %}
+    license='Apache Software License 2.0',
     long_description=readme,
     include_package_data=True,
     keywords='girder-plugin, {{ cookiecutter.entrypoint_name }}',
