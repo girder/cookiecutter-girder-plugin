@@ -5,6 +5,9 @@
     "description": "{{ cookiecutter.short_description }}",
     "homepage": "{{ cookiecutter.homepage }}",
     "license": "Apache-2.0",
+    "peerDependencies": {
+        "@girder/core": "*"
+    },
     "girderPlugin": {
         "name": "{{ cookiecutter.entrypoint_name }}",
         "main": "./main.js"
