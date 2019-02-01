@@ -27,6 +27,7 @@ setup(
     install_requires=requirements,
     license='Apache Software License 2.0',
     long_description=readme,
+    long_description_content_type='text/x-rst',
     include_package_data=True,
     keywords='girder-plugin, {{ cookiecutter.entrypoint_name }}',
     name='{{ cookiecutter.package_slug }}',
