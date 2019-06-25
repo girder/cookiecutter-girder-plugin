@@ -1,0 +1,41 @@
+---
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.6
+
+    steps:
+      - checkout
+      - run:
+          name: Install Python packages
+          command: sudo pip install cookiecutter tox
+      - run:
+          name: Create from cookiecutter with defaults
+          command: cookiecutter --no-input ./cookiecutter-girder-plugin
+      - run:
+          name: Run tox tests from plugin
+          command: tox
+          working_directory: cookiecutter-girder-plugin/hello-world
+      - run:
+          name: Run npm tests from plugin
+          command: |
+            npm install
+            npm run lint
+          working_directory: cookiecutter-girder-plugin/hello-world/hello_world/web_client
+
+workflows:
+  version: 2
+  ci:
+    jobs:
+      - build
+  nightly:
+    triggers:
+      - schedule:
+          cron: "0 0 * * *"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - build
