@@ -1,0 +1,43 @@
+---
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: girder/girder_test:latest-py3
+      - image: circleci/mongo:4.0-ram
+        command: ["mongod", "--storageEngine", "ephemeralForTest", "--dbpath", "/dev/shm/mongo"]
+
+    steps:
+      - checkout
+      - run:
+          name: Install Python packages
+          command: sudo pip install cookiecutter
+      - run:
+          name: Create from cookiecutter with defaults
+          command: cookiecutter --no-input .
+      - run:
+          name: Run tox tests from plugin
+          command: tox
+          working_directory: hello-world
+      - run:
+          name: Run npm tests from plugin
+          command: |
+            npm install
+            npm run lint
+          working_directory: hello-world/hello_world/web_client
+
+workflows:
+  version: 2
+  ci:
+    jobs:
+      - build
+  nightly:
+    triggers:
+      - schedule:
+          cron: "0 0 * * *"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - build
