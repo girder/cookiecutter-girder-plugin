@@ -7,7 +7,14 @@ with open('README.rst') as readme_file:
     readme = readme_file.read()
 
 requirements = [
-    'girder>=3.0.0a1'
+    {%- if cookiecutter.include_girder_worker %}
+    'girder_worker',
+    'girder_worker_utils',
+    'girder_jobs',
+    # TODO: Add additional packages required by both
+    # producer and consumer side installations
+    {% endif %}
+    'girder>=3.0.0a1',
 ]
 
 setup(
@@ -37,8 +44,13 @@ setup(
     version='{{ cookiecutter.version }}',
     zip_safe=False,
     entry_points={
+        {%- if cookiecutter.include_girder_worker %}
+        'girder_worker_plugins': [
+            '{{ cookiecutter.package_slug }} = {{ cookiecutter.package_slug }}.worker:GirderWorkerPlugin',
+        ],
+        {%- endif %}
         'girder.plugin': [
-            '{{ cookiecutter.entrypoint_name }} = {{ cookiecutter.package_slug }}:GirderPlugin'
+            '{{ cookiecutter.entrypoint_name }} = {{ cookiecutter.package_slug }}.girder:GirderPlugin'
         ]
     }
 )

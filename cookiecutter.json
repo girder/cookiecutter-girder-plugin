@@ -10,5 +10,6 @@
   "homepage": "https://github.com/girder/{{ cookiecutter.package_slug }}",
   "include_web_client_plugin": ["yes", "no"],
   "include_linting": ["yes", "no"],
-  "include_testing": ["yes", "no"]
+  "include_testing": ["yes", "no"],
+  "include_girder_worker": ["yes", "no"]
 }
