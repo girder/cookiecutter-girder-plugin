@@ -5,6 +5,7 @@ import sys
 MODULE_REGEX = re.compile(r'^[_a-zA-Z][_a-zA-Z0-9]+$')
 PACKAGE_REGEX = re.compile(r'^[a-zA-Z][-_a-zA-Z0-9]+$')
 
+
 def check_invalid_module_name(option, value):
     if not MODULE_REGEX.match(value):
         print('ERROR: The option "%s" must be a valid python variable name.')

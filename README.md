@@ -69,11 +69,3 @@ cookiecutter gh:girder/cookiecutter-girder-plugin
 * `include_web_client_plugin`
 
     Include boilerplate for extending Girder's web client.
-
-* `include_linting`
-
-    Include linting of the python code using flake8.
-
-* `include_testing`
-
-    Include boilerplate for python unit tests.

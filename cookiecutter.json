@@ -8,7 +8,5 @@
   "short_description": "An example Girder plugin.",
   "version": "0.1.0",
   "homepage": "https://github.com/girder/{{ cookiecutter.package_slug }}",
-  "include_web_client_plugin": ["yes", "no"],
-  "include_linting": ["yes", "no"],
-  "include_testing": ["yes", "no"]
+  "include_web_client_plugin": ["yes", "no"]
 }
