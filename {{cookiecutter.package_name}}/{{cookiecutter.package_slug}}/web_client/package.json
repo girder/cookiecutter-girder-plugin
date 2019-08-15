@@ -13,7 +13,7 @@
         "main": "./main.js"
     },
     "scripts": {
-        "lint": "eslint . ; pug-lint . ; stylint"
+        "lint": "eslint . && pug-lint . && stylint"
     },
     "devDependencies": {
         "@girder/eslint-config": "*",
@@ -28,7 +28,7 @@
         "eslint-plugin-standard": "*",
         "eslint-plugin-underscore": "*",
         "pug-lint": "^2",
-        "stylint": "^1"
+        "stylint": "^2"
     },
     "eslintConfig": {
         "extends": "@girder",
