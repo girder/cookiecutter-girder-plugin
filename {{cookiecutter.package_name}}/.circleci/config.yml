@@ -10,21 +10,16 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install Python packages
-          command: sudo pip install cookiecutter
-      - run:
-          name: Create from cookiecutter with defaults
-          command: cookiecutter --no-input .
-      - run:
-          name: Run tox tests from plugin
+          name: Run server tests
           command: tox
-          working_directory: hello-world
+{%- if cookiecutter.include_web_client_plugin == 'yes' %}
       - run:
-          name: Run npm tests from plugin
+          name: Run web tests
           command: |
             npm install
             npm run lint
-          working_directory: hello-world/hello_world/web_client
+          working_directory: {{cookiecutter.package_slug}}/web_client
+{%- endif %}
 
 workflows:
   version: 2
