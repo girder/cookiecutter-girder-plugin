@@ -1,9 +1,9 @@
 ---
 version: 2.1
 jobs:
-  build:
+  test:
     docker:
-      - image: girder/girder_test:latest-py3
+      - image: girder/girder_test:latest
       - image: circleci/mongo:4.0-ram
         command: ["mongod", "--storageEngine", "ephemeralForTest", "--dbpath", "/dev/shm/mongo"]
 
@@ -30,7 +30,7 @@ workflows:
   version: 2
   ci:
     jobs:
-      - build
+      - test
   nightly:
     triggers:
       - schedule:
@@ -40,4 +40,4 @@ workflows:
               only:
                 - master
     jobs:
-      - build
+      - test
