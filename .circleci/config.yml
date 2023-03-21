@@ -4,14 +4,14 @@ jobs:
   test:
     docker:
       - image: girder/girder_test:latest
-      - image: circleci/mongo:4.0-ram
-        command: ["mongod", "--storageEngine", "ephemeralForTest", "--dbpath", "/dev/shm/mongo"]
+      - image: mongo:3.6
+        command: bash -c "mkdir /dev/shm/mongo && mongod --storageEngine ephemeralForTest --nojournal --dbpath=/dev/shm/mongo --noauth --bind_ip_all"
 
     steps:
       - checkout
       - run:
           name: Install Python packages
-          command: sudo pip install cookiecutter
+          command: pip install cookiecutter
       - run:
           name: Create from cookiecutter with defaults
           command: cookiecutter --no-input .
